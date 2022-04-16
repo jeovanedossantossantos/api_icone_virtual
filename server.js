@@ -1,7 +1,8 @@
 const express = require('express');
+const routes = require('./src/routes');
 const cors = require('cors');
 const db = require('./src/db')
-
+const handleError = require('./src/middlewares/handleError')
 const app = express();
 
 app.use((req, res, next)=>{
@@ -12,6 +13,8 @@ app.use((req, res, next)=>{
     next();
 })
 
-app.use(express.json());
+app.use(express.json())
+app.use(routes)
+app.use(handleError)
 const port = process.env.PORT || 3333
 app.listen(port || 3333, ()=>console.log('listening on PORT '+port))
