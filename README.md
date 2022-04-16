@@ -7,3 +7,7 @@ Bom para iniciar vamos ver a estrutura do banco de dados.
 
 <p>O banco de dados escolhido foi o MySql, para este desafio foi essario três tabelas com o relacionameto 1 para n.
 </p>
+
+# Plano de negocio
+
+<img src="./img/api1.png">
