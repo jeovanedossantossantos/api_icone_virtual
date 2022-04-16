@@ -1,0 +1,11 @@
+{
+  "name": "api_desafio_tecnico",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jeovane dos Santos Santos <jeovane.ssantos@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  }
+}
