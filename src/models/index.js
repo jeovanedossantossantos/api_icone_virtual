@@ -4,12 +4,14 @@ const User = require('./Usuario')
 
 Produtos.belongsToMany(User, {
     foreignKey: 'protudos_id',
-    through:Favoritos
+    through:Favoritos,
+    as: "user"
 
 })
 User.belongsToMany(Produtos, {
     foreignKey: 'user_id',
-    through:Favoritos
+    through:Favoritos,
+    as: "produtos"
     
 })
 
