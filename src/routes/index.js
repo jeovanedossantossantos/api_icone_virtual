@@ -1,11 +1,14 @@
 const express = require('express')
 const controllerUser = require("../controllers/controllerUser")
-
+const controllerAuth = require("../controllers/controllerAuth")
 const routes = express.Router();
 
 routes.get('/',(req,res) => {
     res.send("Olá mundo!")
 })
+
+routes.post('/login',controllerAuth.login)
+
 
 routes.post('/sigin',controllerUser.register)
 routes.post('/like',controllerUser.like)
