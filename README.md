@@ -18,3 +18,14 @@ Bom para iniciar vamos ver a estrutura do banco de dados.
 # O que é MVC?
 <p>
 Em poucas palavras, mvc é um acrônimo para o termo em inglês Model View and Controller que facilita a troca de informações entre a interface do usuário e os dados no banco de dados, tornando as respostas mais rápidas e dinâmicas.</p>
+
+# Comandos Sequelize 
+
+### Criando migrations
+yarn sequelize migration:create --name nome-da-migration
+
+### subindo migrations
+yarn sequelize db:migrate
+
+### desfazendo migrations
+yarn sequelize db:migrate:undo:all
