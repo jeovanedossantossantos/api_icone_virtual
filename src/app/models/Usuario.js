@@ -11,6 +11,7 @@ class Usuario extends Model{
            senha_hash: Sequelize.STRING,
            endereco: Sequelize.STRING,
            telefone: Sequelize.STRING,
+           img_perfil: Sequelize.STRING,
            tipo: Sequelize.ENUM('cliente', 'root'),
         }, {
             sequelize

@@ -2,19 +2,22 @@ const Usuario = require("../models/Usuario");
 const bcrypt = require("bcrypt");
 const Favorito = require("../models/Favorito");
 const Produto = require("../models/Produto");
-
+const multer = require('multer');
+const {storageUser} = require('../../config/multer');
+const parserUser = multer({storage:storageUser})
 class UserController{
   async create(req, res) {
     const { nome, email, senha, endereco } = req.body;
+    console.log(req);
 
     if(!nome || !email || !senha || !endereco || senha.lenght < 8) return res.status(400).json({messagem: "Campos obrigatórios não informados!"})
-  
+    
     const usuarioExiste = await Usuario.findOne({
       where: {email}
     })
 
     if(usuarioExiste) return res.status(400).json({messagem: "Já existe um usuário com este e-mail!"}) 
-
+    parserUser.single("img_perfil")
     const usuario = await Usuario.create(req.body);
     usuario.senha_hash = null
     usuario.senha = null
