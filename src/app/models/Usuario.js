@@ -12,6 +12,7 @@ class Usuario extends Model{
            endereco: Sequelize.STRING,
            telefone: Sequelize.STRING,
            img_perfil: Sequelize.STRING,
+           cloudinary_public_id: Sequelize.STRING,
            tipo: Sequelize.ENUM('cliente', 'root'),
         }, {
             sequelize

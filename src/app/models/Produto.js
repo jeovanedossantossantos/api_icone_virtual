@@ -10,6 +10,9 @@ class Produto extends Model{
            img1: Sequelize.STRING,
            img2: Sequelize.STRING,
            img3: Sequelize.STRING,
+           cloudinary_public_id_img1:Sequelize.STRING,
+           cloudinary_public_id_img2:Sequelize.STRING,
+           cloudinary_public_id_img3:Sequelize.STRING
         }, {
             sequelize
         })
