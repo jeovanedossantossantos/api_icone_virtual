@@ -4,16 +4,26 @@ const Usuario = require("../models/Usuario");
 
 class ProdutoController {
   async create(req, res) {
-    const { nome, preco, img1 } = req.body;
 
-    if (!nome || !preco || !img1)
+    const { nome, preco } = req.body;
+    const { img1, img2, img3 } = req.files
+
+    if (!nome || !preco)
       return res
         .status(400)
         .json({ messagem: "Parâmetros obrigatórios não informados!" });
 
-    const produto = await Produto.create(req.body);
+    if (!img1.path) {
+      const produto = await Produto.create({ ...req.body, img1: "https://res.cloudinary.com/https-cronosagencia-herokuapp-com/image/upload/v1650409061/icone-virtual/padrao_o2ujue.png" })
+      return res.json(produto);
+    }else{
+      const produto = await Produto.create(req.body)
+      return res.json(produto);
 
-    return res.json(produto);
+    }
+    
+
+   
   }
 
   async index(req, res) {
@@ -51,9 +61,9 @@ class ProdutoController {
   async update(req, res) {
     const { id } = req.params;
 
-    const { nome, preco, img1 } = req.body;
+    const { nome, preco} = req.body;
 
-    if (!nome || !preco || !img1)
+    if (!nome || !preco)
       return res
         .status(400)
         .json({ messagem: "Parâmetros obrigatórios não informados!" });
