@@ -5,10 +5,13 @@ const Produto = require("../models/Produto");
 const multer = require('multer');
 const {storageUser} = require('../../config/multer');
 const parserUser = multer({storage:storageUser})
+
+const ImagensUpload = require('../controllers/ImagensController')
+
 class UserController{
   async create(req, res) {
     const { nome, email, senha, endereco } = req.body;
-    console.log(req);
+    // console.log(req);
 
     if(!nome || !email || !senha || !endereco || senha.lenght < 8) return res.status(400).json({messagem: "Campos obrigatórios não informados!"})
     
@@ -17,8 +20,20 @@ class UserController{
     })
 
     if(usuarioExiste) return res.status(400).json({messagem: "Já existe um usuário com este e-mail!"}) 
-    parserUser.single("img_perfil")
+    // parserUser.single("img_perfil")
     const usuario = await Usuario.create(req.body);
+    // if(req.file){
+    //   const {originalname:filename, filename: path} = req.file;
+    //   const ext = filename.split(".").pop();
+
+    //   const img_perfil = await ImagensUpload.uploadPerfil(
+    //     null,
+    //     usuario.id,
+    //     'img_perfil',
+    //     path
+    //     )
+    //     await usuario.save()
+    // }
     usuario.senha_hash = null
     usuario.senha = null
     return res.json(usuario)
@@ -63,7 +78,8 @@ class UserController{
 
   async update(req, res){
     let {id} = req.params
-    const userLogado = await Usuario.findByPk(req.id_user)
+    const userLogado = await Usuario.
+    findByPk(req.id_user)
 
     if(userLogado.tipo !== "root"){
       id = req.id_user
