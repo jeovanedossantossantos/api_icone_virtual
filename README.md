@@ -19,6 +19,17 @@ Bom para iniciar vamos ver a estrutura do banco de dados.
 <p>
 Em poucas palavras, mvc é um acrônimo para o termo em inglês Model View and Controller que facilita a troca de informações entre a interface do usuário e os dados no banco de dados, tornando as respostas mais rápidas e dinâmicas.</p>
 
+# Funcionalidades
+
+<ol>
+  <li>[x] Cadastra usuario (cliente ou root) e produtos</li>
+  <li>[x] Editar usuario e produto</li>
+  <li>[x] Buscar por um usuario ou produto especifico</li>
+  <li>[x] Sistema de like ou de lista de favoritos</li>
+  <li>[x] Upload de imagens de perfil e de produtos, o armazenamento é feito no cloudinary e o link das images é guardado no banco de dados</li>
+  <li>[x] Deletar usuario e produtos</li>
+</ol>
+
 # Comandos Sequelize 
 
 ### Criando migrations
