@@ -1,1 +1,1 @@
-web: npm run migrate && node server.js
+web: npx sequelize-cli db:migrate && node server.js
