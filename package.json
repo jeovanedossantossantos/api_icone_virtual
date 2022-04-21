@@ -21,7 +21,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "migrate": "sequelize db:migrate"
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
