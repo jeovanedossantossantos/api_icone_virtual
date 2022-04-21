@@ -1,6 +1,7 @@
 require('dotenv/config')
 
 const { database, password, host, port, db_username } = require("./env");
+console.log(database, password, host, port, db_username)
 module.exports = {
   dialect: 'mysql',
   host,
