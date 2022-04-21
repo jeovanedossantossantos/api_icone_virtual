@@ -5,7 +5,7 @@ const Produto = require("../models/Produto");
 const multer = require('multer');
 const {storageUser} = require('../../config/multer');
 const parserUser = multer({storage:storageUser})
-
+var cloudinary = require('cloudinary').v2;
 const ImagensUpload = require('../controllers/ImagensController')
 
 class UserController{
@@ -98,16 +98,19 @@ class UserController{
   async delete(req, res){
     let {id} = req.params
     const userLogado = await Usuario.findByPk(req.id_user)
+    
 
     if(userLogado.tipo !== "root"){
       id = req.id_user
     }
+    const cliete = await Usuario.findByPk(id)
     const usuario = await Usuario.destroy({
       where:{
         id
       }
     })
     if(usuario===0) return res.status(400).json({messagem: "Usuarios não encontrado!"})
+    if(usuario===1) await cloudinary.uploader.destroy(cliete.cloudinary_public_id)
     return res.status(200).json({messagem:"Usarios deletado com sucesso!"})
   }
 };
