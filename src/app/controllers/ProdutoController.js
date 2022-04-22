@@ -1,7 +1,7 @@
 const Favorito = require("../models/Favorito");
 const Produto = require("../models/Produto");
 const Usuario = require("../models/Usuario");
-
+var cloudinary = require('cloudinary').v2;
 class ProdutoController {
   async create(req, res) {
 
@@ -89,9 +89,15 @@ class ProdutoController {
     if (!produto)
       return res.status(404).json({ messagem: "Produto não encontrado" });
 
-    await produto.destroy()
+    const resposta =  await produto.destroy()
 
-    return res.status(204).json()
+    if(resposta === 1) {
+      if(produto.cloudinary_public_id_img1) await cloudinary.cloudinary.uploader.destroy(produto.cloudinary_public_id_img1)
+      if(produto.cloudinary_public_id_img2) await cloudinary.cloudinary.uploader.destroy(produto.cloudinary_public_id_img2)
+      if(produto.cloudinary_public_id_img3) await cloudinary.cloudinary.uploader.destroy(produto.cloudinary_public_id_img3)
+    }
+
+    return res.status(204).json({messagem:"Deletado com sucesso!"})
   }
 }
 
