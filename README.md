@@ -40,3 +40,15 @@ yarn sequelize db:migrate
 
 ### desfazendo migrations
 yarn sequelize db:migrate:undo:all
+
+# COMANDO
+
+      --default-authentication-plugin=mysql_native_password --sql_mode=NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER --explicit_defaults_for_timestamp
+
+# AUTENDICAÇÃO 
+
+      --default-authentication-plugin=mysql_native_password
+
+# CONFIGURAÇÕES E PARA NÃO CRIAR UM USUARIO
+
+      --sql_mode=NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER
