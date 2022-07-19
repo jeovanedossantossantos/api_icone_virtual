@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PASS}
+      MYSQL_DATABASE: "db_icone_virtual_docker"
+    ports:
+      - "3306:3306"
+    networks:
+      - icone-virtual-network
+
+  app:
+    build: .
+    container_name: 'api_icone_virtual'          
+    depends_on:
+      - db          
+    volumes:
+      - .:/src/   
+    networks:
+      - icone-virtual-network
+    ports:
+      - 3333:3333
+
+networks: 
+  icone-virtual-network:
+    driver: bridge

@@ -4,3 +4,4 @@ COPY ./package*.json ./
 RUN yarn
 COPY . .
 EXPOSE 3333
+CMD ["./run_web.sh"]  
