@@ -14,16 +14,23 @@ services:
 
   app:
     build: .
-    container_name: 'api_icone_virtual'          
-    depends_on:
-      - db          
+    container_name: 'api_icone_virtual'
+
     volumes:
-      - .:/src/   
+      - .:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - db
+    ports:
+      - "3333:3333"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
     networks:
       - icone-virtual-network
-    ports:
-      - 3333:3333
 
-networks: 
+networks:
   icone-virtual-network:
     driver: bridge
