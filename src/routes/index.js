@@ -17,7 +17,7 @@ const routes = express.Router();
 routes.get('/', (req, res) => {
     res.send("Olá mundo!")
 })
-routes.post('/sessio', SessionController.create)
+routes.post('/session', SessionController.create)
 routes.post('/users', UserController.create)
 routes.get('/users/:id', UserController.index)
 routes.get('/products/:id', ProdutoController.index)
