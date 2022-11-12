@@ -33,13 +33,16 @@ Em poucas palavras, mvc é um acrônimo para o termo em inglês Model View and C
 # Comandos Sequelize 
 
 ### Criando migrations
-yarn sequelize migration:create --name nome-da-migration
+
+    yarn sequelize migration:create --name nome-da-migration
 
 ### subindo migrations
-yarn sequelize db:migrate
+
+    yarn sequelize db:migrate
 
 ### desfazendo migrations
-yarn sequelize db:migrate:undo:all
+
+    yarn sequelize db:migrate:undo:all
 
 # COMANDO
 
